@@ -1,6 +1,14 @@
 project(PuzzleMoppet)
 
-cmake_minimum_required(VERSION 3.1)
+# CMake 4 dropped support for < 3.5.
+# CMake 3.12 adds range syntax to support any future version
+if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.12")
+    cmake_minimum_required(VERSION 3.12...*)
+else()
+    # Oldest supported CMake version
+    cmake_minimum_required(VERSION 3.1)
+endif()
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 set(CMAKE_EXPORT_COMPILE_COMMANDS)
 
